@@ -31,11 +31,17 @@
             bGuardar = new Button();
             bEliminar = new Button();
             label1 = new Label();
-            textbox1 = new TextBox();
-            textbox2 = new TextBox();
+            txtNombre = new TextBox();
+            txtApellido = new TextBox();
             lNombre = new Label();
             lApellido = new Label();
-            textBox3 = new TextBox();
+            txtConcatenacion = new TextBox();
+            btnSalir = new Button();
+            menuStrip1 = new MenuStrip();
+            archivoToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip2 = new MenuStrip();
+            salirToolStripMenuItem1 = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // bGuardar
@@ -46,6 +52,7 @@
             bGuardar.TabIndex = 0;
             bGuardar.Text = "Guardar";
             bGuardar.UseVisualStyleBackColor = true;
+            bGuardar.Click += bGuardar_Click;
             // 
             // bEliminar
             // 
@@ -55,6 +62,7 @@
             bEliminar.TabIndex = 1;
             bEliminar.Text = "Eliminar";
             bEliminar.UseVisualStyleBackColor = true;
+            bEliminar.Click += bEliminar_Click;
             // 
             // label1
             // 
@@ -64,19 +72,20 @@
             label1.Size = new Size(0, 15);
             label1.TabIndex = 2;
             // 
-            // textbox1
+            // txtNombre
             // 
-            textbox1.Location = new Point(128, 92);
-            textbox1.Name = "textbox1";
-            textbox1.Size = new Size(100, 23);
-            textbox1.TabIndex = 3;
+            txtNombre.Location = new Point(128, 92);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(100, 23);
+            txtNombre.TabIndex = 3;
             // 
-            // textbox2
+            // txtApellido
             // 
-            textbox2.Location = new Point(128, 41);
-            textbox2.Name = "textbox2";
-            textbox2.Size = new Size(100, 23);
-            textbox2.TabIndex = 4;
+            txtApellido.Location = new Point(128, 41);
+            txtApellido.Name = "txtApellido";
+            txtApellido.Size = new Size(100, 23);
+            txtApellido.TabIndex = 4;
+            txtApellido.TextChanged += txtApellido_TextChanged;
             // 
             // lNombre
             // 
@@ -96,30 +105,78 @@
             lApellido.TabIndex = 6;
             lApellido.Text = "Apellido";
             // 
-            // textBox3
+            // txtConcatenacion
             // 
-            textBox3.Location = new Point(272, 41);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(200, 158);
-            textBox3.TabIndex = 7;
+            txtConcatenacion.Location = new Point(272, 51);
+            txtConcatenacion.Multiline = true;
+            txtConcatenacion.Name = "txtConcatenacion";
+            txtConcatenacion.Size = new Size(200, 158);
+            txtConcatenacion.TabIndex = 7;
+            // 
+            // btnSalir
+            // 
+            btnSalir.Location = new Point(397, 226);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(75, 23);
+            btnSalir.TabIndex = 8;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 24);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(484, 24);
+            menuStrip1.TabIndex = 9;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // archivoToolStripMenuItem
+            // 
+            archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { salirToolStripMenuItem1 });
+            archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            archivoToolStripMenuItem.Size = new Size(60, 20);
+            archivoToolStripMenuItem.Text = "Archivo";
+            // 
+            // menuStrip2
+            // 
+            menuStrip2.Location = new Point(0, 0);
+            menuStrip2.Name = "menuStrip2";
+            menuStrip2.Size = new Size(484, 24);
+            menuStrip2.TabIndex = 10;
+            menuStrip2.Text = "menuStrip2";
+            // 
+            // salirToolStripMenuItem1
+            // 
+            salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
+            salirToolStripMenuItem1.ShortcutKeys = Keys.Control | Keys.S;
+            salirToolStripMenuItem1.Size = new Size(180, 22);
+            salirToolStripMenuItem1.Text = "Salir";
+            salirToolStripMenuItem1.Click += salirToolStripMenuItem1_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(484, 261);
-            Controls.Add(textBox3);
+            Controls.Add(btnSalir);
+            Controls.Add(txtConcatenacion);
             Controls.Add(lApellido);
             Controls.Add(lNombre);
-            Controls.Add(textbox2);
-            Controls.Add(textbox1);
+            Controls.Add(txtApellido);
+            Controls.Add(txtNombre);
             Controls.Add(label1);
             Controls.Add(bEliminar);
             Controls.Add(bGuardar);
+            Controls.Add(menuStrip1);
+            Controls.Add(menuStrip2);
+            MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "Mi primer Forms";
             Load += Form1_Load;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -129,10 +186,15 @@
         private Button bGuardar;
         private Button bEliminar;
         private Label label1;
-        private TextBox textbox1;
-        private TextBox textbox2;
+        private TextBox txtNombre;
+        private TextBox txtApellido;
         private Label lNombre;
         private Label lApellido;
-        private TextBox textBox3;
+        private TextBox txtConcatenacion;
+        private Button btnSalir;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem archivoToolStripMenuItem;
+        private MenuStrip menuStrip2;
+        private ToolStripMenuItem salirToolStripMenuItem1;
     }
 }
