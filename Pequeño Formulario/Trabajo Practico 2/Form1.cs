@@ -1,11 +1,15 @@
 using Microsoft.VisualBasic;
+using Microsoft.VisualBasic.ApplicationServices;
+using Trabajo_Practico_2.Properties;
 
 namespace Trabajo_Practico_2
 {
-    public partial class Form1 : Form
+    public partial class PequeñoFormulario : Form
     {
-        public Form1()
+        public PequeñoFormulario()
         {
+
+
             InitializeComponent();
         }
 
@@ -73,21 +77,21 @@ namespace Trabajo_Practico_2
                 DialogResult ask = MessageBox.Show("¿Seguro que desea ingresar un nuevo cliente", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (ask == DialogResult.Yes)
                 {
-                    MessageBox.Show("El cliente:" + " " + $"{tbxNombre.Text} {tbxApellido.Text}" + " " + "se ingresó correctamente" ,"Ingreso exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("El cliente:" + " " + $"{tbxNombre.Text} {tbxApellido.Text}" + " " + "se ingresó correctamente", "Ingreso exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LModificar.Text = $"{tbxNombre.Text} {tbxApellido.Text}";
 
 
                 }
                 else if (ask == DialogResult.No)
                 {
-                   
+
                     MessageBox.Show("Ingreso cancelado", "Cancelacion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     LModificar.Text = string.Empty;
                     tbxDni.Clear();
                     tbxApellido.Clear();
                     tbxNombre.Clear();
                     tbxDni.Focus();
-                    
+
                 }
 
             }
@@ -97,7 +101,7 @@ namespace Trabajo_Practico_2
 
         private void TEliminar_Click(object sender, EventArgs e)
         {
-            DialogResult ask = MessageBox.Show("Está a punto de eliminar al cliente" + " " + $"{tbxNombre.Text} {tbxApellido.Text}" , "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+            DialogResult ask = MessageBox.Show("Está a punto de eliminar al cliente" + " " + $"{tbxNombre.Text} {tbxApellido.Text}", "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
             if (ask == DialogResult.Yes)
             {
                 MessageBox.Show("El cliente:" + " " + $"{tbxNombre.Text} {tbxApellido.Text}" + " " + "se eliminó correctamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -105,11 +109,34 @@ namespace Trabajo_Practico_2
                 tbxApellido.Clear();
                 tbxNombre.Clear();
                 tbxDni.Focus();
-               
+
             }
             else if (ask == DialogResult.No)
             {
 
+            }
+        }
+
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void RBMujer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RBMujer.Checked)
+            {
+                pictureBox1.Image = Properties.Resources.usuaria;
+            }
+
+        }
+
+        private void RBVaron_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RBVaron.Checked)
+            {
+                pictureBox1.Image = Properties.Resources.usuario;
             }
         }
     }
